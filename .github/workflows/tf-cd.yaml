@@ -52,7 +52,7 @@ jobs:
       - name: Path build 
         working-directory: environments/dev/provision-gke
         run: |
-          terraform init 
+          terraform init -reconfigure
           terraform fmt 
           terraform validate 
           terraform plan
