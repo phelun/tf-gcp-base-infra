@@ -39,10 +39,10 @@ jobs:
         with:
           version: '>= 416.0.0'
 
-      # - name: test gcloud 
-      #   run: | 
-      #     gcloud projects list
-      #     sleep 30ss
+      - name: test gcloud 
+        run: | 
+          gcloud projects list
+          sleep 30ss
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2.0.2
