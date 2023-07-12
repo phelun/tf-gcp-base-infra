@@ -30,7 +30,7 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           workload_identity_provider: 'projects/635793351475/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-oidc-provider-id'
-          service_account: 'tf-gke-dm-poc-dev-gqzl@dm-poc-development.iam.gserviceaccount.com'
+          service_account: 'infra-sa@dm-poc-development.iam.gserviceaccount.com'
           create_credentials_file: true
           activate_credentials_file: true 
 
