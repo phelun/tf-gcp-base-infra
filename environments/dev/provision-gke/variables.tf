@@ -1,31 +1,31 @@
 variable "project_id" {
-  default = "dm-poc-development"
+  default = ""
 }
 
 variable "region" {
-  default = "europe-west1"
+  default = ""
 }
 
 variable "env_name" {
-  default = "dev"
+  default = ""
 }
 
 variable "network" {
-  default = "dm-poc-dev-netw"
+  default = ""
 }
 
 variable "subnetwork" {
-  default = "dm-poc-dev-subntw"
+  default = ""
 }
 
 variable "ip_range_pods_name" {
-  default = "dm-poc-dev-pods-range"
+  default = ""
 }
 
 variable "ip_range_services_name" {
-  default = "dm-poc-cluster-svc-range"
+  default = ""
 }
 
 variable "cluster_name" {
-  default = "dm-poc-dev"
+  default = ""
 }

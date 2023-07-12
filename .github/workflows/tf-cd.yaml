@@ -1,0 +1,51 @@
+name: GKE Deployment Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PROJECT_ID: dm-poc-development
+  GCS_BUCKET: dm-poc-development
+  # TF_WORKSPACE: dev
+
+jobs:
+  tf-infra-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # - name: Set up Google Cloud SDK
+      #   uses: google-github-actions/setup-gcloud@v1
+      #   with:
+      #     version: '>= 416.0.0'
+      #     project_id: ${{ env.PROJECT_ID }}
+      #     service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Google Cloud Authentications 
+        id: 'auth'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          workload_identity_provider: 'projects/635793351475/locations/global/workloadIdentityPools/github-actions-pool/providers/github-action-provider'
+          service_account: 'tf-gke-dm-poc-dev-gqzl@dm-poc-development.iam.gserviceaccount.com'  
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2.0.2
+        with:
+          terraform_version: 1.0.5
+
+      - name: Path build 
+        working-directory: environments/dev/provision-gke
+        run: |
+          terraform init 
+          terraform fmt 
+          terraform validate 
+          terraform plan
+          # terraform apply 

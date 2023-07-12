@@ -1,0 +1,8 @@
+project_id             = "dm-poc-development"
+region                 = "europe-west1"
+env_name               = "dev"
+network                = "dm-poc-dev-netw"
+subnetwork             = "dm-poc-dev-subntw"
+ip_range_pods_name     = "dm-poc-dev-pods-range"
+ip_range_services_name = "dm-poc-cluster-svc-range"
+cluster_name           = "dm-poc"
