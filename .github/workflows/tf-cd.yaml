@@ -41,7 +41,7 @@ jobs:
 
       - name: test gcloud 
         run: | 
-          gcloud project list
+          gcloud projects list
           sleep 30s 
 
       - name: Setup Terraform
