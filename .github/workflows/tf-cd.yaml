@@ -22,10 +22,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # - name: Set up Google Cloud SDK
-      #   uses: google-github-actions/setup-gcloud@v1
-      #   with:
-      #     version: '>= 416.0.0'
       #     project_id: ${{ env.PROJECT_ID }}
       #     service_account_key: ${{ secrets.GCP_SA_KEY }}
 
@@ -35,6 +31,16 @@ jobs:
         with:
           workload_identity_provider: 'projects/635793351475/locations/global/workloadIdentityPools/github-actions-pool/providers/github-action-provider'
           service_account: 'tf-gke-dm-poc-dev-gqzl@dm-poc-development.iam.gserviceaccount.com'  
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: '>= 416.0.0'
+
+      - name: test gcloud 
+        run: | 
+          gcloud iam service-accounts list
+          sleep 30s 
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2.0.2
